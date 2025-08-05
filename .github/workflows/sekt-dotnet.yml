@@ -23,3 +23,10 @@ jobs:
 
       - name: Build Restoring Dependencies
         run: dotnet restore
+
+      - name: Build
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+      - run: dotnet build --configuration Release --no-restore
