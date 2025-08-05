@@ -21,7 +21,7 @@ jobs:
       - name: Display dotnet version
         run: dotnet --version
 
-      - name: Build Restoring Dependencies
+      - name: Restor Dependencies
         run: dotnet restore
 
       - name: Build
@@ -29,4 +29,7 @@ jobs:
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-      - run: dotnet build --configuration Release --no-restore
+      - run: dotnet build --no-restore
+
+      - name: Tests
+        run: dotnet test --no-restore --verbosity normal
