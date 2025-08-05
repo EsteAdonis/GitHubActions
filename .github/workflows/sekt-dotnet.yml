@@ -20,4 +20,6 @@ jobs:
         # You can test your matrix by priting the current dotnet version
       - name: Display dotnet version
         run: dotnet --version
-        
+
+      - name: Build Restoring Dependencies
+        run: dotnet restore
